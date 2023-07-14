@@ -1,9 +1,9 @@
-import { Global, css } from '@emotion/react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Global, css } from "@emotion/react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "pages/Home";
 
-import Home from 'pages/Home';
-import Navbar from 'components/Navbar';
-import IssueDetail from 'pages/IssueDetail';
+import IssueDetail from "pages/IssueDetail";
+import GeneralLayout from "./layouts/GeneralLayout";
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
       <Global styles={globalStyle} />
       <Router>
         <Routes>
-          <Route element={<Navbar />}>
+          <Route element={<GeneralLayout />}>
             <Route path="/" element={<Home />} />
             <Route path="/issue/:id" element={<IssueDetail />} />
           </Route>

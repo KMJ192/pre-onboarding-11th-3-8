@@ -1,17 +1,26 @@
-import { cloneElement, Suspense } from 'react';
-import { ReactJSXElement } from '@emotion/react/types/jsx-namespace';
+import { cloneElement, Suspense } from "react";
+import { ReactJSXElement } from "@emotion/react/types/jsx-namespace";
 
-import Error from 'components/Error';
-import HomeContents from 'contents/HomeContents';
-import { addIssues, Issue } from 'modules/homeStore';
-import ErrorBoundary from 'components/ErrorBoundary';
-import useInfinityQuery from 'hooks/useInfinityQuery';
+import Error from "components/Error";
+import HomeContents from "contents/HomeContents";
+import { addIssues, Issue } from "modules/homeStore";
+import ErrorBoundary from "components/ErrorBoundary";
+import useInfinityQuery from "hooks/useInfinityQuery";
 
-const HomeFetcher = ({ children }: { children: React.PropsWithChildren<ReactJSXElement> }) => {
-  const { setPage } = useInfinityQuery<IParams, IAction>('facebook/react/issues', addIssues, {
-    page: 1,
-    per_page: 20,
-  });
+const HomeFetcher = ({
+  children,
+}: {
+  children: React.PropsWithChildren<ReactJSXElement>;
+}) => {
+  const { setPage } = useInfinityQuery<IParams, IAction>(
+    "facebook/react/issues",
+    addIssues,
+    {
+      page: 1,
+      per_page: 20,
+      sort: "comments",
+    }
+  );
 
   return cloneElement(children, { setPage });
 };
@@ -33,6 +42,7 @@ export default function Home() {
 interface IParams {
   page: number;
   per_page: number;
+  sort: string;
 }
 
 export interface IAction {

@@ -1,12 +1,12 @@
 /** @jsxImportSource @emotion/react */
-import { css } from '@emotion/react';
-import { useSelector } from 'react-redux';
-import { useEffect, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { css } from "@emotion/react";
+import { useSelector } from "react-redux";
+import { useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 
-import ad from 'assets/image.png';
-import { RootState } from 'modules';
-import { Issue } from 'modules/homeStore';
+import ad from "assets/image.png";
+import { RootState } from "modules";
+import { Issue } from "modules/homeStore";
 
 const HomeContents = ({ setPage }: Partial<IContents>) => {
   const divRef = useRef<IRef>({});
@@ -33,27 +33,33 @@ const HomeContents = ({ setPage }: Partial<IContents>) => {
   return (
     <>
       {issues.map((issue: Issue, index: number) => {
-        const [year, month, date] = issue.created_at.split('T')[0].split('-');
+        const [year, month, date] = issue.created_at.split("T")[0].split("-");
         return (
           <div key={`${issue.id} / ${index}`}>
             {index && index % 4 === 0 ? (
-              <div css={adStyle} onClick={() => (window.location.href = 'https://www.wanted.co.kr/')}>
+              <a
+                css={adStyle}
+                href="https://www.wanted.co.kr/"
+                target="_blank"
+                rel="noreferrer">
                 <img src={ad} alt="ad" />
-              </div>
+              </a>
             ) : null}
             <div
               css={homeContentsContainerStyle}
               ref={(ref) => {
                 if (ref) divRef.current[index] = ref;
               }}
-              onClick={() => navigate(`/issue/${issue.id}`, { state: { ...issue } })}
-            >
+              onClick={() =>
+                navigate(`/issue/${issue.id}`, { state: { ...issue } })
+              }>
               <div>
                 <p>
                   {`#${issue.number}`} {issue.title}
                 </p>
                 <p>
-                  작성자: {issue.user.login}, 작성일: {year}년 {month}월 {date}일
+                  작성자: {issue.user.login}, 작성일: {year}년 {month}월 {date}
+                  일
                 </p>
               </div>
 
