@@ -23,12 +23,23 @@
   "plugins": ["react", "@typescript-eslint"],
   "rules": {
     "react/react-in-jsx-scope": "off",
+    "react/destructuring-assignment": 0,
+    "react/no-unused-prop-types": 0,
+    "react/no-unknown-property": 0,
+    "react/self-closing-comp": 0,
+    "react/no-array-index-key": 0,
     "jsx-a11y/label-has-associated-control": [
       2,
       {
         "labelAttributes": ["htmlFor"]
       }
     ],
-    "import/no-extraneous-dependencies": ["error", { "devDependencies": true }]
+    "jsx-a11y/click-events-have-key-events": 0,
+    "jsx-a11y/no-static-element-interactions": 0,
+    "no-return-assign": 0,
+    "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
+    "@typescript-eslint/default-param-last": 0,
+    "@typescript-eslint/no-shadow": 0,
+    "@typescript-eslint/no-use-before-define": 0
   }
 }
