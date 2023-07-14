@@ -3,7 +3,7 @@ import { css } from "@emotion/react";
 import ReactMarkdown from "react-markdown";
 
 import testImg from "assets/image.png";
-import { Issue } from "@/modules/homeStore";
+import { Issue } from "modules/homeStore";
 import { useLocation } from "react-router-dom";
 
 export default function IssueDetailContents() {

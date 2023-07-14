@@ -10,14 +10,14 @@ import { Issue } from "modules/homeStore";
 import Spinner from "components/Spinner";
 import useValueHomeState from "store/pages/Home/hooks/useValueHomeState";
 
-const HomeContents = ({ setPage }: Partial<IContents>) => {
+function HomeContents({ setPage }: Partial<IContents>) {
   const divRef = useRef<IRef>({});
   const navigate = useNavigate();
   const { issues } = useSelector((state: RootState) => state.homeStore);
   const { issueLoading } = useValueHomeState();
 
   const intersection = new IntersectionObserver((entries, observer) => {
-    entries.forEach((entry) => {
+    entries.forEach(entry => {
       if (entry.isIntersecting) {
         observer.disconnect();
         if (setPage) {
@@ -44,29 +44,22 @@ const HomeContents = ({ setPage }: Partial<IContents>) => {
             {index && index % 4 === 0 ? (
               <div
                 css={adStyle}
-                onClick={() =>
-                  (window.location.href = "https://www.wanted.co.kr/")
-                }
-              >
+                onClick={() => (window.location.href = "https://www.wanted.co.kr/")}>
                 <img src={ad} alt="ad" />
               </div>
             ) : null}
             <div
               css={homeContentsContainerStyle}
-              ref={(ref) => {
+              ref={ref => {
                 if (ref) divRef.current[index] = ref;
               }}
-              onClick={() =>
-                navigate(`/issue/${issue.id}`, { state: { ...issue } })
-              }
-            >
+              onClick={() => navigate(`/issue/${issue.id}`, { state: { ...issue } })}>
               <div>
                 <p>
                   {`#${issue.number}`} {issue.title}
                 </p>
                 <p>
-                  작성자: {issue.user.login}, 작성일: {year}년 {month}월 {date}
-                  일
+                  작성자: {issue.user.login}, 작성일: {year}년 {month}월 {date}일
                 </p>
               </div>
 
@@ -84,7 +77,7 @@ const HomeContents = ({ setPage }: Partial<IContents>) => {
       )}
     </div>
   );
-};
+}
 
 interface IContents {
   setPage: React.Dispatch<React.SetStateAction<number>>;

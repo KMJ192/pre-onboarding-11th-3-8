@@ -10,7 +10,7 @@ import Spinner from "components/Spinner";
 import useSetHomeState from "store/pages/Home/hooks/useSetHomeState";
 
 const HomeFetcher = ({
-  children,
+  children
 }: {
   children: React.PropsWithChildren<ReactJSXElement>;
 }) => {
@@ -18,13 +18,13 @@ const HomeFetcher = ({
 
   const fetchPrevAction = () => {
     setHomeState({
-      issueLoading: true,
+      issueLoading: true
     });
   };
 
   const fetchNextAction = () => {
     setHomeState({
-      issueLoading: false,
+      issueLoading: false
     });
   };
 
@@ -34,6 +34,8 @@ const HomeFetcher = ({
     {
       page: 1,
       per_page: 20,
+      state: "open",
+      sort: "comments"
     },
     fetchPrevAction,
     fetchNextAction
@@ -59,6 +61,8 @@ export default function Home() {
 interface IParams {
   page: number;
   per_page: number;
+  state: string;
+  sort: string;
 }
 
 export interface IAction {

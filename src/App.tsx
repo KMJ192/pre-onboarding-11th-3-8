@@ -5,6 +5,19 @@ import Home from "pages/Home/Page";
 import Navbar from "components/Navbar";
 import IssueDetail from "pages/IssueDetail/IssueDetail";
 
+const globalStyle = css`
+  html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    width: 1000px;
+    margin: 0 auto;
+  }
+`;
+
 function App() {
   return (
     <>
@@ -20,18 +33,5 @@ function App() {
     </>
   );
 }
-
-const globalStyle = css`
-  html {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-
-  body {
-    width: 1000px;
-    margin: 0 auto;
-  }
-`;
 
 export default App;
