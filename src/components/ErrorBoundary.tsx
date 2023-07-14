@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode } from "react";
 
 interface Props {
   children: ReactNode;
@@ -11,7 +11,7 @@ interface State {
 }
 const initialState: State = {
   hasError: false,
-  error: null,
+  error: null
 };
 
 class ErrorBoundary extends React.Component<Props, State> {

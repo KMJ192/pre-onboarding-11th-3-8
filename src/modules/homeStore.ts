@@ -1,17 +1,18 @@
-const ADD_ISSUES = 'homeStore/ADD_ISSUES' as const;
+const ADD_ISSUES = "homeStore/ADD_ISSUES" as const;
 
-export const addIssues = <T extends Issue>(issue: T[]) => {
-  return {
-    type: ADD_ISSUES,
-    payload: issue,
-  };
-};
+export const addIssues = <T extends Issue>(issue: T[]) => ({
+  type: ADD_ISSUES,
+  payload: issue
+});
 
 const initialState: HomeStoreState = {
-  issues: [],
+  issues: []
 };
 
-export default function homeStore(state: HomeStoreState = initialState, action: HomeStoreAction) {
+export default function homeStore(
+  state: HomeStoreState = initialState,
+  action: HomeStoreAction
+) {
   switch (action.type) {
     case ADD_ISSUES:
       return { issues: [...state.issues, ...action.payload] };
