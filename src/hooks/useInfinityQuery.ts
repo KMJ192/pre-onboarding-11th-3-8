@@ -1,24 +1,23 @@
-import { AxiosResponse } from 'axios';
-import { useDispatch } from 'react-redux';
-import { useEffect, useState } from 'react';
+import { AxiosResponse } from "axios";
+import { useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
 
-import { IAction } from 'pages/Home';
-import getIssues from 'api/getIssues';
+import { IAction } from "pages/Home";
+import getIssues from "api/getIssues";
 
-export default function useInfinityQuery<T extends Partial<IOptions>, K extends IAction>(
-  url: string,
-  action: K,
-  options: T
-) {
+export default function useInfinityQuery<
+  T extends Partial<IOptions>,
+  K extends IAction
+>(url: string, action: K, options: T) {
   const dispatch = useDispatch();
   const [page, setPage] = useState<number>(options.page ?? 1);
   const [data, setData] = useState<AxiosResponse | null>(null);
 
-  const newObtions = { ...options, page };
+  const newOptions = { ...options, page };
 
   useEffect(() => {
     (async function () {
-      const data = await getIssues<T>(url, newObtions);
+      const data = await getIssues<T>(url, newOptions);
       setData(data);
       dispatch(action(data?.data));
     })();

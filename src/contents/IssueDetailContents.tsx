@@ -1,15 +1,15 @@
 /** @jsxImportSource @emotion/react */
-import { css } from '@emotion/react';
-import ReactMarkdown from 'react-markdown';
+import { css } from "@emotion/react";
+import ReactMarkdown from "react-markdown";
 
-import testImg from 'assets/image.png';
-import { Issue } from '@/modules/homeStore';
-import { useLocation } from 'react-router-dom';
+import testImg from "assets/image.png";
+import { Issue } from "@/modules/homeStore";
+import { useLocation } from "react-router-dom";
 
 export default function IssueDetailContents() {
   const issue: Issue = useLocation().state;
-  const [year, month, date] = issue.created_at.split('T')[0].split('-');
-  console.log(issue);
+  const [year, month, date] = issue.created_at.split("T")[0].split("-");
+
   return (
     <div css={containerStyle}>
       <div css={profileStyle}>
@@ -28,7 +28,6 @@ export default function IssueDetailContents() {
       <div css={lineStyle}>
         <div></div>
       </div>
-
       <ReactMarkdown>{issue.body}</ReactMarkdown>
     </div>
   );
