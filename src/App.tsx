@@ -1,9 +1,9 @@
-import { Global, css } from '@emotion/react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Global, css } from "@emotion/react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import Home from 'pages/Home';
-import Navbar from 'components/Navbar';
-import IssueDetail from 'pages/IssueDetail';
+import Home from "pages/Home/Page";
+import Navbar from "components/Navbar";
+import IssueDetail from "pages/IssueDetail/IssueDetail";
 
 function App() {
   return (
