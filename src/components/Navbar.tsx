@@ -1,12 +1,12 @@
 /** @jsxImportSource @emotion/react */
-import { css } from '@emotion/react';
-import { Outlet } from 'react-router-dom';
+import { css } from "@emotion/react";
+import { Outlet } from "react-router-dom";
 
 export default function Navbar() {
   return (
     <>
       <nav css={navbarStyle}>
-        <div className="title">navbar</div>
+        <div className="title">facebook react</div>
       </nav>
       <Outlet />
     </>
